@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saga's Wear | Premium Collection</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome ve Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigasyon -->
+    <nav class="navbar">
+        <div class="logo">SAGA'S WEAR</div>
+        <ul class="nav-links">
+            <li><a href="#">Anasayfa</a></li>
+            <li><a href="#koleksiyon">Koleksiyon</a></li>
+            <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+        <div class="cart-icon"> <!-- JS içindeki onclick bağlantısı sağlandı -->
+            <i class="fas fa-shopping-bag"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <!-- Hero Bölümü -->
+    <header id="main-hero" class="hero">
+        <div class="hero-content">
+            <h1>Sade ve Zamansız</h1>
+            <p>Yeni sezon koleksiyonuyla tarzını baştan yarat.</p>
+            <button class="btn-shop" onclick="window.location.href='#product-grid'">Şimdi Keşfet</button>
+        </div>
+    </header>
+
+    <!-- Ana Ürünler Bölümü -->
+    <section id="main-products" class="products">
+        <h2 class="section-title">Öne Çıkanlar</h2>
+        <div class="product-grid" id="product-grid">
+            <!-- Ürünler JS ile buraya gelecek -->
+        </div>
+    </section>
+
+    <!-- 1. YAZ 2026 KOLEKSİYON DETAYI -->
+    <section id="summer-2026-detail" class="collection-detail" style="display: none; padding: 80px 8%;">
+        <div class="detail-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+            <button class="btn-back" onclick="closeCollection()" style="background:none; border:1px solid #000; padding:10px 20px; cursor:pointer; font-weight:600;">
+                <i class="fas fa-arrow-left"></i> Geri Dön
+            </button>
+            <h2 class="section-title" style="margin:0;">Yaz 2026 Koleksiyonu</h2>
+        </div>
+        <div class="product-grid" id="summer-product-grid">
+            <!-- Yaz ürünleri JS ile buraya gelecek -->
+        </div>
+    </section>
+
+    <!-- 2. KLASİK KOLEKSİYON DETAYI -->
+    <section id="classic-detail" class="collection-detail" style="display: none; padding: 80px 8%;">
+        <div class="detail-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+            <button class="btn-back" onclick="closeCollection()" style="background:none; border:1px solid #000; padding:10px 20px; cursor:pointer; font-weight:600;">
+                <i class="fas fa-arrow-left"></i> Geri Dön
+            </button>
+            <h2 class="section-title" style="margin:0;">Klasik Koleksiyon</h2>
+        </div>
+        <div class="product-grid" id="classic-product-grid">
+            <!-- Klasik ürünler JS ile buraya gelecek -->
+        </div>
+    </section>
+
+    <!-- Koleksiyon Seçim Bölümü -->
+    <section id="koleksiyon" class="collection-section">
+        <h2 class="section-title">Koleksiyonlar</h2>
+        <div class="collection-container">
+            <!-- Yaz 2026 Paketi -->
+            <div class="collection-item" onclick="openSummerCollection()">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Yaz">
+                <div class="collection-overlay">
+                    <span>Yaz 2026</span>
+                </div>
+            </div>
+            <!-- Klasik Paketi -->
+            <div class="collection-item" onclick="openClassicCollection()">
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Klasik">
+                <div class="collection-overlay">
+                    <span>Klasik</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim Bölümü -->
+    <section id="iletisim" class="contact-section">
+        <div class="contact-card">
+            <h2>Bizimle İletişime Geçin</h2>
+            <form id="contact-form">
+                <input type="text" placeholder="Adınız Soyadınız" required>
+                <input type="email" placeholder="E-posta Adresiniz" required>
+                <textarea placeholder="Mesajınız..." rows="5" required></textarea>
+                <button type="submit" class="btn-send">Gönder</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Saga's Wear. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <!-- SEPET YAN PANELİ -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Sepetim</h2>
+            <i class="fas fa-times close-cart" onclick="toggleCart()"></i>
+        </div>
+        <div id="cart-items-container" class="cart-items">
+            <!-- Ürünler buraya dolacak -->
+        </div>
+        <div class="cart-footer">
+            <div class="total">
+                <span>Toplam:</span>
+                <span id="total-price">0 TL</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">Ödemeye Geç</button>
+        </div>
+    </div>
+
+    <!-- ÖDEME MODALI -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCheckout()">&times;</span>
+            
+            <div class="demo-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>DİKKAT:</strong> Bu site sadece bir simülasyondur. Lütfen gerçek kart numaranızı kullanmayın.</p>
+            </div>
+
+            <h2>Ödeme Bilgileri</h2>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label>Kart Üzerindeki İsim</label>
+                    <input type="text" placeholder="Ad Soyad" required>
+                </div>
+                <div class="form-group">
+                    <label>Kart Numarası</label>
+                    <input type="text" placeholder="0000 0000 0000 0000" maxlength="16" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Son Kullanma</label>
+                        <input type="text" placeholder="AA/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" placeholder="000" maxlength="3" required>
+                    </div>
+                </div>
+                <div class="order-summary">
+                    <p>Ödenecek Tutar: <strong id="checkout-total">0 TL</strong></p>
+                </div>
+                <button type="submit" class="pay-btn">Ödemeyi Tamamla</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

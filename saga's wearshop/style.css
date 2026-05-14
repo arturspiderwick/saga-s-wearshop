@@ -1,0 +1,371 @@
+/* GENEL AYARLAR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: #888; }
+
+.cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; }
+
+#cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #000;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* HERO SECTION */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.btn-shop {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-shop:hover { background: #eee; }
+
+/* PRODUCTS */
+.products { padding: 50px 8%; }
+.section-title { text-align: center; margin-bottom: 40px; font-weight: 300; font-size: 2rem; }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: #fff;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.product-card:hover { transform: translateY(-5px); }
+
+.product-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.product-card h3 { margin: 15px 0 5px; font-size: 1.1rem; }
+.product-card p { color: #777; margin-bottom: 15px; }
+
+.add-to-cart {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* KOLEKSİYON STİLLERİ */
+.collection-section {
+    padding: 80px 8%;
+    background: #fff;
+}
+
+.collection-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.collection-item {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.collection-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.collection-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.collection-item:hover img { transform: scale(1.1); }
+
+/* İLETİŞİM STİLLERİ */
+.contact-section {
+    padding: 80px 8%;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-card {
+    background: white;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 8px;
+}
+
+.contact-card h2 { margin-bottom: 30px; text-align: center; font-weight: 300; }
+
+.contact-card form { display: flex; flex-direction: column; gap: 15px; }
+
+.contact-card input, .contact-card textarea {
+    padding: 15px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+.contact-card input:focus, .contact-card textarea:focus { border-color: #000; }
+
+.btn-send {
+    padding: 15px;
+    background: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-send:hover { background: #333; }
+
+/* SEPET YAN PANELİ */
+.cart-sidebar {
+    position: fixed;
+    top: 0; right: -400px;
+    width: 350px; height: 100%;
+    background: #fff;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 2000;
+    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.active { right: 0; }
+
+.cart-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.close-cart { cursor: pointer; font-size: 1.5rem; }
+
+.cart-items { flex: 1; padding: 20px; overflow-y: auto; }
+
+.cart-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; border-bottom: 1px solid #f9f9f9; padding-bottom: 10px; }
+.cart-item img { width: 60px; height: 60px; object-fit: cover; }
+.cart-item-info h4 { font-size: 0.9rem; }
+.cart-item-info p { color: #888; font-size: 0.8rem; }
+
+.cart-footer { padding: 20px; border-top: 1px solid #eee; }
+.total { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 20px; }
+
+.checkout-btn { width: 100%; padding: 15px; background: #000; color: #fff; border: none; cursor: pointer; font-weight: bold; }
+
+.cart-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none; z-index: 1500;
+}
+.cart-overlay.active { display: block; }
+
+/* ÖDEME MODALI (CHECKOUT MODAL) - image_a2889c.png Düzenlemesi */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 50px auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+
+    
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 28px; cursor: pointer;
+    color: #333;
+}
+
+.modal-content h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; /* Label'ı inputun üzerine alır */
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-row input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.order-summary {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.pay-btn {
+    width: 100%;
+    padding: 15px;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pay-btn:hover { background: #333; }
+
+/* MOBİL UYUMLULUK */
+@media (max-width: 768px) {
+    .collection-container { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .navbar { padding: 15px 5%; }
+    .hero h1 { font-size: 1.8rem; }
+    .modal-content { margin: 20px auto; width: 95%; }
+}
+
+.demo-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border-left: 5px solid #ffeeba;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.85rem;
+}
+
+.demo-warning i {
+    font-size: 1.2rem;
+    color: #ffc107;
+}
